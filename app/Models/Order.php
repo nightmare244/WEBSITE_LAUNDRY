@@ -11,8 +11,13 @@ class Order extends Model
     use HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'order_code', 'customer_name', 'whatsapp_number', 'weight',
-        'total_price', 'status', 'estimated_ready_at',
+        'order_code',
+        'customer_name',
+        'whatsapp_number',
+        'weight',
+        'total_price',
+        'status',
+        'estimated_ready_at',
     ];
 
     protected function casts(): array
@@ -26,11 +31,32 @@ class Order extends Model
 
     public function getStatusLabelAttribute(): string
     {
-        return config("laundry.statuses.{$this->status}", ucfirst($this->status));
+        return config(
+            "laundry.statuses.{$this->status}",
+            ucfirst($this->status)
+        );
     }
 
     public function getProgressPercentAttribute(): int
     {
-        return (array_search($this->status, array_keys(config('laundry.statuses')), true) / 4) * 100;
+        $statuses = array_keys(config('laundry.statuses'));
+
+        $index = array_search(
+            $this->status,
+            $statuses,
+            true
+        );
+
+        if ($index === false) {
+            return 0;
+        }
+
+        if (count($statuses) <= 1) {
+            return 100;
+        }
+
+        return (int) round(
+            ($index / (count($statuses) - 1)) * 100
+        );
     }
 }
