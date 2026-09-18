@@ -1,0 +1,30 @@
+{
+    "name": "kang-laundry/management-app",
+    "type": "project",
+    "description": "Laundry order management application for Kang Laundry.",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.24",
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "scripts": {
+        "setup": ["@php -r \"file_exists('.env') || copy('.env.example', '.env');\"", "@php artisan key:generate", "@php artisan migrate --force"],
+        "dev": ["Composer\\Config::disableProcessTimeout", "php artisan serve"],
+        "test": ["@php artisan config:clear", "@php artisan test"]
+    },
+    "extra": {"laravel": {"dont-discover": []}},
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
