@@ -22,6 +22,9 @@ RUN composer install \
 
 COPY . .
 
+RUN test -f /app/resources/views/admin/orders/edit.blade.php \
+    || (echo "ERROR: edit.blade.php tidak masuk Docker build" && exit 1)
+
 RUN mkdir -p \
         storage/framework/cache \
         storage/framework/sessions \
