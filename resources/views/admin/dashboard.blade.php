@@ -336,7 +336,7 @@
 
                     <form
                         method="POST"
-                        action="{{ route('admin.orders.store') }}"
+                        action="{{ route('admin.orders.store', [], false) }}"
                         class="space-y-4"
                     >
 
@@ -667,7 +667,7 @@
 
                                             <form
                                                 method="POST"
-                                                action="{{ route('admin.orders.status', $order) }}"
+                                                action="{{ route('admin.orders.status', $order, false) }}"
                                             >
 
                                                 @csrf
@@ -775,7 +775,7 @@
                                                 {{-- ARCHIVE --}}
                                                 <form
                                                     method="POST"
-                                                    action="{{ route('admin.orders.destroy', $order) }}"
+                                                    action="{{ route('admin.orders.destroy', $order, false) }}"
                                                     onsubmit="return confirm('Arsipkan pesanan {{ $order->order_code }}?')"
                                                 >
 

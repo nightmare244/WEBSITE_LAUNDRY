@@ -311,7 +311,7 @@
 
 
                         <form
-                            action="{{ route('user.order.store') }}"
+                            action="/order"
                             method="POST"
                             class="mt-8 space-y-6"
                         >
