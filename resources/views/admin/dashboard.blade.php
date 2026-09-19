@@ -776,7 +776,7 @@
                                                 <form
                                                     method="POST"
                                                     action="{{ route('admin.orders.destroy', $order, false) }}"
-                                                    onsubmit="return confirm('Arsipkan pesanan {{ $order->order_code }}?')"
+                                                    onsubmit="return confirm('Hapus pesanan {{ $order->order_code }}?')"
                                                 >
 
                                                     @csrf
@@ -786,9 +786,9 @@
                                                     <button
                                                         type="submit"
                                                         class="rounded-lg bg-rose-50 px-3 py-2 text-xs font-bold text-rose-600 transition hover:bg-rose-100"
-                                                        title="Arsipkan"
+                                                        title="Hapus"
                                                     >
-                                                        Arsip
+                                                        Hapus
                                                     </button>
 
                                                 </form>
@@ -860,7 +860,23 @@
 
 </div>
 
+{{-- FLOATING LOGOUT ADMIN --}}
+<form
+    method="POST"
+    action="{{ route('admin.logout', [], false) }}"
+    class="no-print fixed bottom-5 right-5 z-50"
+>
+    @csrf
 
+    <button
+        type="submit"
+        onclick="return confirm('Apakah kamu yakin ingin keluar dari admin?')"
+        class="flex items-center gap-2 rounded-xl border border-rose-200 bg-white px-5 py-3 text-sm font-extrabold text-rose-600 shadow-lg shadow-slate-900/10 transition-all duration-200 hover:-translate-y-1 hover:bg-rose-600 hover:text-white hover:shadow-xl"
+    >
+        <span class="text-base">↪</span>
+        <span>Logout Admin</span>
+    </button>
+</form>
 @endsection
 
 
