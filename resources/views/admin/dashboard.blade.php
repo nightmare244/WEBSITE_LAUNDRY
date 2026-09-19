@@ -855,28 +855,28 @@
             </section>
 
         </div>
+        <div class="no-print flex justify-end px-5 pb-8 sm:px-8">
+            <form
+                method="POST"
+                action="{{ route('admin.logout', [], false) }}"
+            >
+                @csrf
+
+                <button
+                    type="submit"
+                    onclick="return confirm('Apakah kamu yakin ingin keluar dari admin?')"
+                    class="flex items-center gap-2 rounded-xl border border-rose-200 bg-white px-5 py-3 text-sm font-extrabold text-rose-600 shadow-lg shadow-slate-900/10 transition-all duration-200 hover:-translate-y-1 hover:bg-rose-600 hover:text-white hover:shadow-xl"
+                >
+                    <span>↪</span>
+                    <span>Logout Admin</span>
+                </button>
+            </form>
+        </div>
 
     </main>
 
 </div>
 
-{{-- FLOATING LOGOUT ADMIN --}}
-<form
-    method="POST"
-    action="{{ route('admin.logout', [], false) }}"
-    class="no-print fixed bottom-5 right-5 z-50"
->
-    @csrf
-
-    <button
-        type="submit"
-        onclick="return confirm('Apakah kamu yakin ingin keluar dari admin?')"
-        class="flex items-center gap-2 rounded-xl border border-rose-200 bg-white px-5 py-3 text-sm font-extrabold text-rose-600 shadow-lg shadow-slate-900/10 transition-all duration-200 hover:-translate-y-1 hover:bg-rose-600 hover:text-white hover:shadow-xl"
-    >
-        <span class="text-base">↪</span>
-        <span>Logout Admin</span>
-    </button>
-</form>
 @endsection
 
 
